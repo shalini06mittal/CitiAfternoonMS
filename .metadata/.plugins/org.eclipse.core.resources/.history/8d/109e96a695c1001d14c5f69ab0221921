@@ -1,0 +1,30 @@
+package com.citi.ms;
+
+import java.math.BigDecimal;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ExchangeRestController {
+
+	@GetMapping("/exchange/from/{from}/to/{to}/qty/{qty}")
+	public ExchangeValue getConversionMultiples(@PathVariable String from,
+			@PathVariable String to,
+			@PathVariable int qty)
+	{
+		RestTemplate template = new RestTemplate();
+//		ExchangeValue ob =
+//		template.getForObject("http://localhost:8081/forex/from/{from}/to/{to}",
+//				ExchangeValue.class, from, to);
+		
+		ResponseEntity<ExchangeValue> resp =
+		template.getForObject("http://localhost:8081/forex/from/{from}/to/{to}",
+				ExchangeValue.class, from, to);
+		ob.setTotal(ob.getConversionMultiple().multiply(new BigDecimal(qty)));
+		return ob;
+	}
+}

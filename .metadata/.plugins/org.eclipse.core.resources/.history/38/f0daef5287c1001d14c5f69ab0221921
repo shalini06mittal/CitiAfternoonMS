@@ -1,0 +1,9 @@
+package com.citi.ms.repo;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.citi.ms.entity.ExchangeValue;
+
+public interface ExchangeValueRepo extends CrudRepository<ExchangeValue, Integer>{
+
+}

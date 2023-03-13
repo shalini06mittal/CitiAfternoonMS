@@ -1,0 +1,5 @@
+package com.citi.ms.repo;
+
+public interface ExchangeValueRepo {
+
+}
