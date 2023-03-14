@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techgatha.model.UserCatalog;
+import com.techgatha.model.UserCatalogResponse;
 import com.techgatha.service.BookCatalogService;
 
 @RestController
@@ -22,6 +23,12 @@ public class BookCatalogResource {
 	public List<UserCatalog> getBooksPurchased(@PathVariable String email)
 	{
 		return service.getBooksOrdered(email);
+	}
+	
+	@GetMapping("/dto/{email}")
+	public UserCatalogResponse getBooksPurchasedDTO(@PathVariable String email)
+	{
+		return service.getBooksOrderedDTO(email);
 	}
 	
 }

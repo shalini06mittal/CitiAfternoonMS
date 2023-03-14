@@ -13,7 +13,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.techgatha.model.OrderWrapper;
+import com.techgatha.model.OrderWrapperDTO;
 import com.techgatha.model.UserCatalog;
+import com.techgatha.model.UserCatalogDTO;
+import com.techgatha.model.UserCatalogResponse;
 
 @Service
 public class BookCatalogService {
@@ -37,5 +40,28 @@ public class BookCatalogService {
 			catalog.setDatetime(wrapper.getDatetime());
 			return catalog;
 		}).collect(Collectors.toList());
+	}
+	
+	public UserCatalogResponse getBooksOrderedDTO(String email)
+	{	
+		OrderWrapperDTO dto = this.bookOrderFeignClient.getBookOrderDetailsDTO(email);
+		
+		System.out.println(dto.getViewersChoice());
+		List<OrderWrapper> orders = dto.getOrders();
+		
+		List<UserCatalogDTO> catalogs =
+		 orders.stream()
+		.map(wrapper ->{
+			System.out.println(wrapper.getBookid());
+			UserCatalogDTO catalog = this.bookFeignClient.getBookDetailsDTO(wrapper.getBookid());
+			catalog.setDatetime(wrapper.getDatetime());
+			return catalog;
+		}).collect(Collectors.toList());
+		 
+		UserCatalogResponse resp = new UserCatalogResponse();
+		resp.setCatalog(catalogs);
+		resp.setEmail(email);
+		resp.setFavMovies(dto.getViewersChoice());
+		 return resp;
 	}
 }
