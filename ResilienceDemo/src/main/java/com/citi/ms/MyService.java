@@ -28,9 +28,9 @@ public class MyService {
 //	}
 	
 	// Resilience 4j properties + timer
-	@CircuitBreaker(fallbackMethod = "getMessageFallback", name = "producer")
-	@TimeLimiter(name="producer")
-	@Retry(name = "producer")
+	@TimeLimiter(name="producer",fallbackMethod = "getMessageFallback")
+	//@CircuitBreaker(fallbackMethod = "getMessageFallback", name = "producer")
+	//@Retry(name = "producer")
 	public CompletableFuture<String> getMessage(String username)
 	{
 		System.out.println("getting message");
