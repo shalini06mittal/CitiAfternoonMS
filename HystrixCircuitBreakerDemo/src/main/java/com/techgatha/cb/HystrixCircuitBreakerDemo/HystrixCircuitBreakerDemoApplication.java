@@ -13,6 +13,10 @@ import java.util.concurrent.TimeUnit;
 @EnableCircuitBreaker
 public class HystrixCircuitBreakerDemoApplication {
 
+	//https://github.com/Netflix/Hystrix/wiki/Configuration
+	
+	//localhost:8001/hystrix
+	//localhost:8001/actuator/hystrix.stream
 	public static void main(String[] args) throws InterruptedException {
 		ConfigurableApplicationContext ctx = SpringApplication.run(HystrixCircuitBreakerDemoApplication.class, args);
 		MyService myService = ctx.getBean(MyService.class);
