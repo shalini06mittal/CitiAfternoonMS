@@ -10,14 +10,18 @@ public class HelloRestController {
 
 	
 	@GetMapping("/greet/{username}")
-	public String greet(@PathVariable String username)
+	public String greet(@PathVariable String username) throws InterruptedException
 	{
+		System.out.println("........Waiting....");
+		Thread.sleep(10000);
+		System.out.println(".......wait end.........");
 		return "Hello "+username;
 	}
 	
 	@GetMapping("/greetex")
 	public String greetException(@RequestParam(required = false) String username) throws Exception 
 	{
+		
 		System.out.println(username);
 		if(username != null)
 			return "Hey!!! No exception";
