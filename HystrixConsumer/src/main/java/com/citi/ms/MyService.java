@@ -22,6 +22,4 @@ public class MyService {
 	{
 		return "Hey Guest";
 	}
-	
-	
 }

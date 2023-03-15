@@ -9,13 +9,14 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class MyService {
+	
     @HystrixCommand(fallbackMethod = "defaultDoSomething",
     commandKey = "mykey")
     public void doSomething(int input) {
         System.out.println("input: " + input);
         //in case of exception fallbackMethod is called
        
-        System.out.println("output: " + 10 / input);
+        System.out.println("output: " + 10 / input);// 0
     }
 
     public void defaultDoSomething(int input) {
