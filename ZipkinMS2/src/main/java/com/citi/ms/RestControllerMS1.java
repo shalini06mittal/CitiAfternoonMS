@@ -16,6 +16,12 @@ public class RestControllerMS1 {
 	@GetMapping("/ms2")
 	public String microservice1()
 	{
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return template.getForObject("http://MS3/ms3", String.class);
 	}
 }

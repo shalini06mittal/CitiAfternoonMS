@@ -16,6 +16,6 @@ public class RestControllerMS1 {
 	@GetMapping("/ms3")
 	public String microservice1()
 	{
-		return "Hey from MS3";
+		throw new RuntimeException();
 	}
 }
