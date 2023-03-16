@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.techgatha.model.OrderWrapper;
 import com.techgatha.model.OrderWrapperDTO;
 
-@FeignClient(name="BOOK-ORDER-SERVICE")
+@FeignClient(name="GATEWAY-SERVER")
 public interface BookOrderFeignClient {
 
 	

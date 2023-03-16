@@ -19,8 +19,8 @@ public class BookResource {
 	@GetMapping("/{bookid}")
 	public Book getBook(@PathVariable String bookid) throws Exception
 	{
-		if(bookid.equals("B1"))
-			throw new Exception();
+//		if(bookid.equals("B1"))
+//			throw new Exception();
 		return repository.findById(bookid).get();
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.techgatha.model.UserCatalog;
 import com.techgatha.model.UserCatalogDTO;
 
-@FeignClient(name="BOOK-SERVICE")
+@FeignClient(name="GATEWAY-SERVER")
 public interface BookFeignClient {
 
 	
